@@ -2,10 +2,33 @@ STEVILO_DOVOLJENIH_NAPAK = 10
 PRAVILNA_CRKA, PONOVLJENA_CRKA, NAPACNA_CRKA = '+', 'o', '-'
 ZMAGA, PORAZ = 'W', 'X'
 
+ZACETEK = 'Z'
+class Vislice:
+    def __init__(self):
+        self.igre = {}
+    
+    def prost_id_igre(self):
+        if self.igre:
+            return max(self.igre) + 1
+        else:
+            return 0
+    
+    def nova_igra(self):
+        igra = nova_igra()
+        id = self.prost_id_igre()
+        par = (igra, ZACETEK)
+        self.igre[id] = par
+        return id
+
+    def ugibaj(self, id_igre, crka):
+        igra, stanje = self.igre[id_igre]
+        stanje = igra.ugibaj(crka)
+        self.igre[id_igre] = (igra, stanje)
+
 class Igra:
-    def __init__(self, geslo, crke=[]):
+    def __init__(self, geslo):
         self.geslo = geslo
-        self.crke = crke
+        self.crke = []
     
     def napacne_crke(self):
         return [c for c in self.crke if c.upper() not in self.geslo.upper()]
