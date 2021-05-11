@@ -1,10 +1,8 @@
-<html>
-
-<body>
+%rebase('base.tpl', naslov='Igra vislic')
 <h1>{{igra.pravilni_del_gesla()}}</h1>
 
 Nepravilne črke: {{igra.nepravilni_ugibi()}} <br/>
-Stopnja obešenosti: {{igra.stevilo_napak()}} <br>
+Stopnja obešenosti: {{igra.stevilo_napak()}} 
 
 % if igra.zmaga():
 <h>Čestitke, uganil/a si geslo {{igra.geslo}}!</h1>
@@ -18,6 +16,3 @@ Ugibaj: <input name="crka" /> <input type="submit" value="Ugibaj" />
 </form>
 % end 
 
-</body>
-
-</html>
